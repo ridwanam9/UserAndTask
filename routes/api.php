@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,6 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // Route yang butuh autentikasi dan status aktif
 Route::middleware(['auth:sanctum', 'checkUserStatus', 'logRequest'])->group(function () {
-    // Tambahkan rute lain di sini, misalnya:
-    // Route::get('/users', [UserController::class, 'index']);
+    Route::get('/users', [UserController::class, 'index']);
+    Route::post('/users', [UserController::class, 'store']);
 });
