@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
+Route::post('/login', [AuthController::class, 'login']);
+
+// Route yang butuh autentikasi dan status aktif
 Route::middleware(['auth:sanctum', 'checkUserStatus', 'logRequest'])->group(function () {
-    // route API lainnya di sini
+    // Tambahkan rute lain di sini, misalnya:
+    // Route::get('/users', [UserController::class, 'index']);
 });
