@@ -1,6 +1,20 @@
 (async function () {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
+
+  // Tampilkan role user di navbar
+  const roleSpan = document.getElementById('user-role');
+  if (roleSpan && user?.role) {
+    roleSpan.textContent = `Login sebagai: ${user.role}`;
+  }
+
+  // Logout button sudah di-handle sebelumnya
+  document.getElementById('logout-btn')?.addEventListener('click', () => {
+    localStorage.clear();
+    window.location.href = 'index.html';
+  });
+
+
   if (!token || !user) {
     return window.location.href = 'index.html';
   }
