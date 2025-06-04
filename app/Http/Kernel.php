@@ -69,4 +69,10 @@ class Kernel extends HttpKernel
         'logRequest' => \App\Http\Middleware\LogRequest::class,
 
     ];
+
+    protected function schedule(Schedule $schedule): void
+    {
+        $schedule->command('tasks:check-overdue')->hourly(); // atau everyMinute() saat testing
+    }
+
 }
