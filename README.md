@@ -104,7 +104,7 @@ Semua halaman frontend berada di folder public/frontend/:
 ## 👤 Login Awal (Seeder)
 | Email                                         | Password | Role  |
 | --------------------------------------------- | -------- | ----- |
-| [admin@example.com](mailto:admin@example.com) | password | Admin |
+| [admin@email.com](mailto:admin@email.com) | password | Admin |
 
 
 ## 📎 Catatan
