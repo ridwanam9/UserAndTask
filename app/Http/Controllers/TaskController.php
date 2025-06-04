@@ -55,4 +55,49 @@ class TaskController extends Controller
 
         return response()->json(['message' => 'Task created', 'task' => $task], 201);
     }
+
+    public function update(Request $request, $id){
+        $task = Task::findOrFail($id);
+        $user = auth()->user();
+
+        // Hanya admin atau pembuat task yang bisa edit
+        if ($user->role !== 'admin' && $task->created_by !== $user->id) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'assigned_to' => 'required|uuid|exists:users,id',
+            'status' => ['required', Rule::in(['pending', 'in_progress', 'done'])],
+            'due_date' => 'required|date|after_or_equal:today',
+        ]);
+
+        // Validasi tambahan jika manager
+        if ($user->role === 'manager') {
+            $assignee = \App\Models\User::find($request->assigned_to);
+            if ($assignee->role !== 'staff') {
+                return response()->json(['message' => 'Manager only allowed to assign task to staff'], 403);
+            }
+        }
+
+        $task->update($request->only(['title', 'description', 'assigned_to', 'status', 'due_date']));
+
+        return response()->json(['message' => 'Task updated', 'task' => $task]);
+    }
+
+    public function destroy($id){
+        $task = Task::findOrFail($id);
+        $user = auth()->user();
+
+        if ($user->role !== 'admin' && $task->created_by !== $user->id) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $task->delete();
+
+        return response()->json(['message' => 'Task deleted']);
+    }
+
+
 }
