@@ -16,6 +16,30 @@
             <button class="btn btn-danger" id="logout-btn">Logout</button>
         </nav>
 
+        <form id="task-form" class="mb-4">
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <input type="text" class="form-control" id="title"
+                        placeholder="Judul Task" required>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <input type="date" class="form-control" id="due_date"
+                        required>
+                </div>
+            </div>
+            <div class="mb-2">
+                <textarea class="form-control" id="description" rows="2"
+                    placeholder="Deskripsi" required></textarea>
+            </div>
+            <div class="mb-2">
+                <select class="form-control" id="assigned_to" required>
+                    <option value>Pilih User</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Tambah Task</button>
+            <div id="task-msg" class="mt-2"></div>
+        </form>
+
         <script src="js/dashboard.js"></script>
     </body>
 </html>
