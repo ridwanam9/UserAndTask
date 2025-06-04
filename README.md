@@ -14,7 +14,7 @@ Aplikasi ini merupakan hasil evaluasi kemampuan fullstack developer yang dibangu
 
 ## 📐 ERD (Entity Relationship Diagram)
 
-![ERD](public\img\erd.png)  
+![ERD](public/img/erd.png)  
 
 ---
 
