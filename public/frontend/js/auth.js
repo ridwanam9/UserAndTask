@@ -15,9 +15,16 @@ document.getElementById('login-form').addEventListener('submit', async function 
 
     const data = await res.json();
 
+    // if (!res.ok) {
+    //   errorDiv.textContent = data.message || 'Login gagal';
+    //   return;
+    // }
+
     if (!res.ok) {
-      errorDiv.textContent = data.message || 'Login gagal';
-      return;
+        const err = await res.json();
+        console.error('Login error:', err);
+        errorDiv.textContent = err.message || 'Login gagal';
+        return;
     }
 
     // Simpan token dan user

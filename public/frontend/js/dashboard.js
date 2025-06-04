@@ -30,3 +30,9 @@
     taskListDiv.innerHTML = '<p class="text-danger">Gagal mengambil data task.</p>';
   }
 })();
+
+document.getElementById('logout-btn').addEventListener('click', () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  window.location.href = 'index.html';
+});
