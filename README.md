@@ -38,6 +38,7 @@ cd UserAndTask
 2. **Install Dependensi**
 ```bash
 composer install
+npm install
 ```
 3. **Buat file .env**
 ```bash
