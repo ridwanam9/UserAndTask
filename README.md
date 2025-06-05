@@ -32,8 +32,8 @@ Aplikasi ini merupakan hasil evaluasi kemampuan fullstack developer yang dibangu
 
 1. **Clone repo ini**
 ```bash
-git clone https://github.com/username/repo-user-task.git
-cd repo-user-task
+git clone https://github.com/ridwanam9/UserAndTask.git
+cd UserAndTask
 ```
 2. **Install Dependensi**
 ```bash
